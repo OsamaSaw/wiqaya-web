@@ -1,0 +1,188 @@
+{
+  "nav": {
+    "features": "Features",
+    "mobileApp": "Mobile App",
+    "services": "Services",
+    "reviews": "Reviews",
+    "contact": "Contact",
+    "adminPortal": "Admin Portal"
+  },
+  "hero": {
+    "trustedInSaudi": "🇸🇦 Trusted in Saudi Arabia",
+    "title": "Professional Security",
+    "titleSecond": "At Your Fingertips",
+    "subtitle": "Book vetted bodyguards and security personnel instantly through our mobile app. Real-time availability, secure payments, and professional service guaranteed.",
+    "downloadApp": "Download App",
+    "watchDemo": "Watch Demo"
+  },
+  "stats": {
+    "activeGuards": "Active Guards",
+    "completedBookings": "Completed Bookings", 
+    "customerSatisfaction": "Customer Satisfaction",
+    "availableSupport": "Available Support"
+  },
+  "features": {
+    "title": "Powerful Mobile App Features",
+    "subtitle": "Our mobile application brings together cutting-edge technology and professional security services to provide the most comprehensive security booking platform in Saudi Arabia.",
+    "realTimeTracking": {
+      "title": "Real-Time Location Tracking",
+      "description": "GPS-enabled booking with precise location sharing and real-time guard tracking for your safety."
+    },
+    "securePayment": {
+      "title": "Secure Payment System", 
+      "description": "Integrated payment processing with multiple payment methods and transparent pricing."
+    },
+    "inAppMessaging": {
+      "title": "In-App Messaging",
+      "description": "Direct communication with your assigned guard through encrypted chat system."
+    },
+    "smartScheduling": {
+      "title": "Smart Scheduling",
+      "description": "Advanced availability checking and intelligent scheduling based on guard expertise and location."
+    },
+    "reviewsRatings": {
+      "title": "Reviews & Ratings",
+      "description": "Comprehensive rating system to ensure quality service and build trust in our community."
+    },
+    "verifiedGuards": {
+      "title": "Verified Guards",
+      "description": "All guards are thoroughly vetted with background checks and professional certifications."
+    }
+  },
+  "mobileApp": {
+    "title": "Download the Wiqayah App",
+    "subtitle": "Experience the future of security services with our mobile app. Available for both iOS and Android, featuring multi-language support (Arabic/English), real-time notifications, and seamless user experience for clients, guards, and administrators.",
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "appScreenshots": "App Screenshots",
+    "comingSoon": "Coming Soon",
+    "features": {
+      "multiRole": "Multi-role system (Client, Guard, Admin)",
+      "realTimeBooking": "Real-time booking and availability",
+      "gpsTracking": "GPS location tracking and navigation",
+      "securePayments": "Secure payment processing",
+      "messaging": "In-app messaging and notifications",
+      "reviewSystem": "Review and rating system"
+    }
+  },
+  "services": {
+    "title": "Professional Security Services",
+    "subtitle": "We offer comprehensive security solutions for individuals, businesses, and events. All our guards are professionally trained, licensed, and thoroughly vetted.",
+    "personalProtection": {
+      "title": "Personal Protection",
+      "description": "Elite bodyguards for VIPs, executives, and high-profile individuals. Discreet protection with the highest level of professionalism.",
+      "price": "From 200 SAR/hour"
+    },
+    "eventSecurity": {
+      "title": "Event Security",
+      "description": "Comprehensive security for weddings, corporate events, and private functions. Crowd management and risk assessment included.",
+      "price": "Custom Pricing"
+    },
+    "corporateSecurity": {
+      "title": "Corporate Security",
+      "description": "On-site security officers for offices, warehouses, and industrial facilities. 24/7 monitoring and rapid response capabilities.",
+      "price": "Monthly Contracts"
+    }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Don't just take our word for it. Here's what our satisfied clients have to say about our services.",
+    "clients": {
+      "ahmed": {
+        "name": "Ahmed Al-Rashid",
+        "role": "Business Executive",
+        "comment": "Exceptional service! The app makes it so easy to book qualified security personnel. Highly recommended!"
+      },
+      "sarah": {
+        "name": "Sarah Al-Fahad",
+        "role": "Event Organizer", 
+        "comment": "Professional guards and seamless booking process. The real-time tracking feature gives great peace of mind."
+      },
+      "mohammed": {
+        "name": "Mohammed Al-Qahtani",
+        "role": "Corporate Manager",
+        "comment": "Wiqayah has revolutionized how we handle security for our events. The quality is unmatched."
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to Get Started?",
+    "subtitle": "Contact us today to discuss your security needs or download our app to start booking immediately.",
+    "downloadApp": {
+      "title": "Download App",
+      "description": "Get instant access to our services",
+      "button": "Download Now"
+    },
+    "contactUs": {
+      "title": "Contact Us",
+      "description": "Speak with our security experts",
+      "button": "Email Us"
+    },
+    "adminPortal": {
+      "title": "Admin Portal",
+      "description": "Manage your business operations",
+      "button": "Admin Login"
+    }
+  },
+  "footer": {
+    "description": "The leading platform for professional security services in Saudi Arabia. Your safety is our priority.",
+    "copyright": "© {{year}} Wiqayah Security Services. All rights reserved.",
+    "services": {
+      "title": "Services",
+      "personalProtection": "Personal Protection",
+      "eventSecurity": "Event Security",
+      "corporateSecurity": "Corporate Security",
+      "consultation": "Consultation"
+    },
+    "platform": {
+      "title": "Platform",
+      "mobileApp": "Mobile App",
+      "adminPortal": "Admin Portal",
+      "api": "API",
+      "support": "Support"
+    },
+    "contact": {
+      "title": "Contact Information",
+      "location": "📍 Riyadh, Saudi Arabia",
+      "phone": "📞 +966 000 000 000",
+      "email": "✉️ info@wiqayah.com",
+      "support": "⏰ 24/7 Support Available"
+    }
+  },
+  "admin": {
+    "users": {
+      "title": "Users Management",
+      "subtitle": "Manage client accounts and user profiles",
+      "totalUsers": "Total Users",
+      "verifiedEmails": "Verified Emails", 
+      "searchResults": "Search Results",
+      "searchPlaceholder": "Search users by name or email...",
+      "addUser": "Add User",
+      "user": "User",
+      "email": "Email",
+      "id": "ID",
+      "actions": "Actions",
+      "userProfile": "User Profile",
+      "noUsers": "No users available",
+      "noUsersFound": "No users found matching your search",
+      "editUser": "Edit User",
+      "createUser": "Create New User",
+      "fullName": "Full Name",
+      "emailAddress": "Email Address",
+      "fullNamePlaceholder": "Enter user's full name",
+      "emailPlaceholder": "Enter user's email address",
+      "cancel": "Cancel",
+      "update": "Update",
+      "create": "Create",
+      "saving": "Saving...",
+      "fillAllFields": "Please fill in all fields",
+      "userUpdated": "User updated successfully",
+      "userCreated": "User created successfully",
+      "userDeleted": "User deleted successfully",
+      "failedToSave": "Failed to save user",
+      "failedToDelete": "Failed to delete user",
+      "failedToLoad": "Failed to load users",
+      "deleteConfirm": "Are you sure you want to delete {{name}}?"
+    }
+  }
+}
