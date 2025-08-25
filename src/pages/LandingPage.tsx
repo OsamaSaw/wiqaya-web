@@ -38,11 +38,30 @@ import {
   TrendingUp as TrendingUpIcon,
   WorkspacePremium as WorkspacePremiumIcon,
 } from '@mui/icons-material';
-import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import AnimatedSection from '../components/AnimatedSection';
 import AnimatedCounter from '../components/AnimatedCounter';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+
+// Simple CSS animation component to replace framer-motion
+const FadeInSection: React.FC<{ children: React.ReactNode; delay?: number }> = ({ children, delay = 0 }) => (
+  <Box
+    sx={{
+      animation: `fadeInUp 0.6s ease-out ${delay}s both`,
+      '@keyframes fadeInUp': {
+        from: {
+          opacity: 0,
+          transform: 'translateY(30px)'
+        },
+        to: {
+          opacity: 1,
+          transform: 'translateY(0)'
+        }
+      }
+    }}
+  >
+    {children}
+  </Box>
+);
 
 /**
  * Modern bilingual landing page for Wiqayah - showcasing the comprehensive mobile app
@@ -130,18 +149,28 @@ const LandingPage: React.FC = () => {
         elevation={0}
       >
         <Toolbar>
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+          <Box 
+            display="flex" 
+            alignItems="center"
+            sx={{
+              animation: 'slideInLeft 0.5s ease-out',
+              '@keyframes slideInLeft': {
+                from: {
+                  opacity: 0,
+                  transform: 'translateX(-20px)'
+                },
+                to: {
+                  opacity: 1,
+                  transform: 'translateX(0)'
+                }
+              }
+            }}
           >
-            <Box display="flex" alignItems="center">
-              <ShieldIcon color="primary" sx={{ fontSize: 32, mr: 1 }} />
-              <Typography variant="h5" sx={{ fontWeight: 700, color: 'primary.main' }}>
-                Wiqayah
-              </Typography>
-            </Box>
-          </motion.div>
+            <ShieldIcon color="primary" sx={{ fontSize: 32, mr: 1 }} />
+            <Typography variant="h5" sx={{ fontWeight: 700, color: 'primary.main' }}>
+              Wiqayah
+            </Typography>
+          </Box>
           
           <Box sx={{ flexGrow: 1 }} />
           
@@ -193,7 +222,7 @@ const LandingPage: React.FC = () => {
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
           <Grid container spacing={6} alignItems="center">
             <Grid item xs={12} md={6}>
-              <AnimatedSection>
+              <FadeInSection>
                 <Chip 
                   label={t('hero.trustedInSaudi')}
                   color="secondary" 
@@ -266,11 +295,11 @@ const LandingPage: React.FC = () => {
                     {t('hero.watchDemo')}
                   </Button>
                 </Stack>
-              </AnimatedSection>
+              </FadeInSection>
             </Grid>
             
             <Grid item xs={12} md={6}>
-              <AnimatedSection direction="right" delay={0.2}>
+              <FadeInSection delay={0.2}>
                 <Box
                   sx={{
                     position: 'relative',
@@ -299,7 +328,7 @@ const LandingPage: React.FC = () => {
                     {t('mobileApp.appScreenshots')}
                   </Typography>
                 </Box>
-              </AnimatedSection>
+              </FadeInSection>
             </Grid>
           </Grid>
         </Container>
@@ -328,19 +357,19 @@ const LandingPage: React.FC = () => {
       {/* App Features section */}
       <Box id="features" sx={{ py: 10, backgroundColor: alpha(theme.palette.primary.main, 0.02) }}>
         <Container>
-          <AnimatedSection>
+          <FadeInSection>
             <Typography variant="h3" align="center" gutterBottom sx={{ fontWeight: 700, mb: 2 }}>
               {t('features.title')}
             </Typography>
             <Typography variant="subtitle1" align="center" color="text.secondary" sx={{ mb: 8, maxWidth: 600, mx: 'auto' }}>
               {t('features.subtitle')}
             </Typography>
-          </AnimatedSection>
+          </FadeInSection>
           
           <Grid container spacing={4}>
             {appFeatures.map((feature, index) => (
               <Grid item xs={12} md={4} key={index}>
-                <AnimatedSection delay={index * 0.1}>
+                <FadeInSection delay={index * 0.1}>
                   <Card sx={{ height: '100%', p: 3 }}>
                     <CardContent>
                       <Box 
@@ -366,7 +395,7 @@ const LandingPage: React.FC = () => {
                       </Typography>
                     </CardContent>
                   </Card>
-                </AnimatedSection>
+                </FadeInSection>
               </Grid>
             ))}
           </Grid>
@@ -378,7 +407,7 @@ const LandingPage: React.FC = () => {
         <Container>
           <Grid container spacing={6} alignItems="center">
             <Grid item xs={12} md={6}>
-              <AnimatedSection>
+              <FadeInSection>
                 <Typography variant="h3" gutterBottom sx={{ fontWeight: 700 }}>
                   {t('mobileApp.title')}
                 </Typography>
@@ -420,11 +449,11 @@ const LandingPage: React.FC = () => {
                     {t('mobileApp.googlePlay')}
                   </Button>
                 </Stack>
-              </AnimatedSection>
+              </FadeInSection>
             </Grid>
             
             <Grid item xs={12} md={6}>
-              <AnimatedSection direction="left">
+              <FadeInSection>
                 <Box
                   sx={{
                     height: 400,
@@ -458,7 +487,7 @@ const LandingPage: React.FC = () => {
                     </Typography>
                   </Stack>
                 </Box>
-              </AnimatedSection>
+              </FadeInSection>
             </Grid>
           </Grid>
         </Container>
@@ -467,18 +496,18 @@ const LandingPage: React.FC = () => {
       {/* Services section */}
       <Box id="services" sx={{ py: 10, backgroundColor: alpha(theme.palette.primary.main, 0.02) }}>
         <Container>
-          <AnimatedSection>
+          <FadeInSection>
             <Typography variant="h3" align="center" gutterBottom sx={{ fontWeight: 700, mb: 2 }}>
               {t('services.title')}
             </Typography>
             <Typography variant="subtitle1" align="center" color="text.secondary" sx={{ mb: 8, maxWidth: 700, mx: 'auto' }}>
               {t('services.subtitle')}
             </Typography>
-          </AnimatedSection>
+          </FadeInSection>
           
           <Grid container spacing={4}>
             <Grid item xs={12} md={4}>
-              <AnimatedSection>
+              <FadeInSection>
                 <Card sx={{ height: '100%', textAlign: 'center', p: 4 }}>
                   <SecurityIcon color="primary" sx={{ fontSize: 64, mb: 3 }} />
                   <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
@@ -489,11 +518,11 @@ const LandingPage: React.FC = () => {
                   </Typography>
                   <Chip label={t('services.personalProtection.price')} color="primary" variant="outlined" />
                 </Card>
-              </AnimatedSection>
+              </FadeInSection>
             </Grid>
             
             <Grid item xs={12} md={4}>
-              <AnimatedSection delay={0.1}>
+              <FadeInSection delay={0.1}>
                 <Card sx={{ height: '100%', textAlign: 'center', p: 4 }}>
                   <GroupIcon color="primary" sx={{ fontSize: 64, mb: 3 }} />
                   <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
@@ -504,11 +533,11 @@ const LandingPage: React.FC = () => {
                   </Typography>
                   <Chip label={t('services.eventSecurity.price')} color="primary" variant="outlined" />
                 </Card>
-              </AnimatedSection>
+              </FadeInSection>
             </Grid>
             
             <Grid item xs={12} md={4}>
-              <AnimatedSection delay={0.2}>
+              <FadeInSection delay={0.2}>
                 <Card sx={{ height: '100%', textAlign: 'center', p: 4 }}>
                   <WorkspacePremiumIcon color="primary" sx={{ fontSize: 64, mb: 3 }} />
                   <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
@@ -519,7 +548,7 @@ const LandingPage: React.FC = () => {
                   </Typography>
                   <Chip label={t('services.corporateSecurity.price')} color="primary" variant="outlined" />
                 </Card>
-              </AnimatedSection>
+              </FadeInSection>
             </Grid>
           </Grid>
         </Container>
@@ -528,19 +557,19 @@ const LandingPage: React.FC = () => {
       {/* Testimonials section */}
       <Box id="testimonials" sx={{ py: 10, backgroundColor: 'background.paper' }}>
         <Container>
-          <AnimatedSection>
+          <FadeInSection>
             <Typography variant="h3" align="center" gutterBottom sx={{ fontWeight: 700, mb: 2 }}>
               {t('testimonials.title')}
             </Typography>
             <Typography variant="subtitle1" align="center" color="text.secondary" sx={{ mb: 8, maxWidth: 600, mx: 'auto' }}>
               {t('testimonials.subtitle')}
             </Typography>
-          </AnimatedSection>
+          </FadeInSection>
           
           <Grid container spacing={4}>
             {testimonials.map((testimonial, index) => (
               <Grid item xs={12} md={4} key={index}>
-                <AnimatedSection delay={index * 0.1}>
+                <FadeInSection delay={index * 0.1}>
                   <Card sx={{ height: '100%', p: 3 }}>
                     <CardContent>
                       <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 3 }}>
@@ -562,7 +591,7 @@ const LandingPage: React.FC = () => {
                       </Typography>
                     </CardContent>
                   </Card>
-                </AnimatedSection>
+                </FadeInSection>
               </Grid>
             ))}
           </Grid>
@@ -572,18 +601,18 @@ const LandingPage: React.FC = () => {
       {/* Contact section */}
       <Box id="contact" sx={{ py: 10, backgroundColor: alpha(theme.palette.primary.main, 0.02) }}>
         <Container>
-          <AnimatedSection>
+          <FadeInSection>
             <Typography variant="h3" align="center" gutterBottom sx={{ fontWeight: 700, mb: 2 }}>
               {t('cta.title')}
             </Typography>
             <Typography variant="subtitle1" align="center" color="text.secondary" sx={{ mb: 6, maxWidth: 600, mx: 'auto' }}>
               {t('cta.subtitle')}
             </Typography>
-          </AnimatedSection>
+          </FadeInSection>
           
           <Grid container spacing={4} justifyContent="center">
             <Grid item xs={12} md={4}>
-              <AnimatedSection>
+              <FadeInSection>
                 <Card sx={{ textAlign: 'center', p: 4 }}>
                   <PhoneAndroidIcon color="primary" sx={{ fontSize: 48, mb: 2 }} />
                   <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
@@ -596,11 +625,11 @@ const LandingPage: React.FC = () => {
                     {t('cta.downloadApp.button')}
                   </Button>
                 </Card>
-              </AnimatedSection>
+              </FadeInSection>
             </Grid>
             
             <Grid item xs={12} md={4}>
-              <AnimatedSection delay={0.1}>
+              <FadeInSection delay={0.1}>
                 <Card sx={{ textAlign: 'center', p: 4 }}>
                   <ChatIcon color="primary" sx={{ fontSize: 48, mb: 2 }} />
                   <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
@@ -613,11 +642,11 @@ const LandingPage: React.FC = () => {
                     {t('cta.contactUs.button')}
                   </Button>
                 </Card>
-              </AnimatedSection>
+              </FadeInSection>
             </Grid>
             
             <Grid item xs={12} md={4}>
-              <AnimatedSection delay={0.2}>
+              <FadeInSection delay={0.2}>
                 <Card sx={{ textAlign: 'center', p: 4 }}>
                   <TrendingUpIcon color="primary" sx={{ fontSize: 48, mb: 2 }} />
                   <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
@@ -630,7 +659,7 @@ const LandingPage: React.FC = () => {
                     {t('cta.adminPortal.button')}
                   </Button>
                 </Card>
-              </AnimatedSection>
+              </FadeInSection>
             </Grid>
           </Grid>
         </Container>

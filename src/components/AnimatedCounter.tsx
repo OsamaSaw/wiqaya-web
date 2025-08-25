@@ -1,6 +1,5 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
-import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
 
@@ -27,13 +26,15 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   });
 
   return (
-    <motion.div
+    <Box 
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.6 }}
+      textAlign="center"
+      sx={{
+        opacity: inView ? 1 : 0,
+        transform: inView ? 'translateY(0)' : 'translateY(20px)',
+        transition: 'opacity 0.6s ease-out, transform 0.6s ease-out'
+      }}
     >
-      <Box textAlign="center">
         <Typography
           variant="h3"
           sx={{
@@ -59,8 +60,7 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
         <Typography variant="subtitle1" color="text.secondary">
           {label}
         </Typography>
-      </Box>
-    </motion.div>
+    </Box>
   );
 };
 
