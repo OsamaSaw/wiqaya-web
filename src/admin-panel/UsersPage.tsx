@@ -36,7 +36,6 @@ import {
   Person as PersonIcon,
   Email as EmailIcon,
 } from '@mui/icons-material';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import api, { ApiUser, UsersResponse } from '../services/api';
 import type { User } from '../types';
@@ -401,101 +400,99 @@ const UsersPage: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <AnimatePresence>
-                {filteredUsers.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={4} align="center" sx={{ py: 6 }}>
-                      <Stack alignItems="center" spacing={2}>
-                        <PersonIcon sx={{ fontSize: 48, color: 'text.disabled' }} />
-                        <Typography color="text.secondary">
-                          {search ? 'No users found matching your search' : 'No users available'}
-                        </Typography>
+              {filteredUsers.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={4} align="center" sx={{ py: 6 }}>
+                    <Stack alignItems="center" spacing={2}>
+                      <PersonIcon sx={{ fontSize: 48, color: 'text.disabled' }} />
+                      <Typography color="text.secondary">
+                        {search ? 'No users found matching your search' : 'No users available'}
+                      </Typography>
+                    </Stack>
+                  </TableCell>
+                </TableRow>
+              ) : (
+                filteredUsers.map((user: ApiUser) => (
+                  <TableRow
+                    key={user.id}
+                    sx={{
+                      '&:hover': {
+                        backgroundColor: alpha(theme.palette.primary.main, 0.02),
+                        cursor: 'pointer'
+                      }
+                    }}
+                    onClick={() => handleOpenUserDetail(user)}
+                  >
+                    <TableCell>
+                      <Stack direction="row" alignItems="center" spacing={2}>
+                        <Box
+                          sx={{
+                            width: 40,
+                            height: 40,
+                            borderRadius: '50%',
+                            backgroundColor: alpha(theme.palette.primary.main, 0.1),
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'primary.main',
+                            fontWeight: 600
+                          }}
+                        >
+                          {user.firstName.charAt(0).toUpperCase()}
+                        </Box>
+                        <Box>
+                          <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+                            {user.firstName} {user.lastName}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {user.role.charAt(0).toUpperCase() + user.role.slice(1)} • {user.isVerified ? 'Verified' : 'Unverified'}
+                          </Typography>
+                        </Box>
+                      </Stack>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant="body2">{user.email}</Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Chip label={`#${user.id}`} size="small" variant="outlined" />
+                    </TableCell>
+                    <TableCell align="right">
+                      <Stack direction="row" spacing={1} justifyContent="flex-end">
+                        <IconButton
+                          size="small"
+                          color="primary"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleOpenEdit(user);
+                          }}
+                          sx={{
+                            '&:hover': {
+                              backgroundColor: alpha(theme.palette.primary.main, 0.1)
+                            }
+                          }}
+                        >
+                          <EditIcon fontSize="small" />
+                        </IconButton>
+                        <IconButton
+                          size="small"
+                          color="error"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDelete(user.id, `${user.firstName} ${user.lastName}`);
+                          }}
+                          sx={{
+                            '&:hover': {
+                              backgroundColor: alpha(theme.palette.error.main, 0.1)
+                            }
+                          }}
+                        >
+                          <DeleteIcon fontSize="small" />
+                        </IconButton>
                       </Stack>
                     </TableCell>
                   </TableRow>
-                ) : (
-                  filteredUsers.map((user: ApiUser, index) => (
-                    <TableRow
-                      key={user.id}
-                      sx={{
-                        '&:hover': {
-                          backgroundColor: alpha(theme.palette.primary.main, 0.02),
-                          cursor: 'pointer'
-                        }
-                      }}
-                      onClick={() => handleOpenUserDetail(user)}
-                    >
-                      <TableCell>
-                        <Stack direction="row" alignItems="center" spacing={2}>
-                          <Box
-                            sx={{
-                              width: 40,
-                              height: 40,
-                              borderRadius: '50%',
-                              backgroundColor: alpha(theme.palette.primary.main, 0.1),
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              color: 'primary.main',
-                              fontWeight: 600
-                            }}
-                          >
-                            {user.firstName.charAt(0).toUpperCase()}
-                          </Box>
-                          <Box>
-                            <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
-                              {user.firstName} {user.lastName}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                              {user.role.charAt(0).toUpperCase() + user.role.slice(1)} • {user.isVerified ? 'Verified' : 'Unverified'}
-                            </Typography>
-                          </Box>
-                        </Stack>
-                      </TableCell>
-                      <TableCell>
-                        <Typography variant="body2">{user.email}</Typography>
-                      </TableCell>
-                      <TableCell>
-                        <Chip label={`#${user.id}`} size="small" variant="outlined" />
-                      </TableCell>
-                      <TableCell align="right">
-                        <Stack direction="row" spacing={1} justifyContent="flex-end">
-                          <IconButton
-                            size="small"
-                            color="primary"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleOpenEdit(user);
-                            }}
-                            sx={{
-                              '&:hover': {
-                                backgroundColor: alpha(theme.palette.primary.main, 0.1)
-                              }
-                            }}
-                          >
-                            <EditIcon fontSize="small" />
-                          </IconButton>
-                          <IconButton
-                            size="small"
-                            color="error"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleDelete(user.id, `${user.firstName} ${user.lastName}`);
-                            }}
-                            sx={{
-                              '&:hover': {
-                                backgroundColor: alpha(theme.palette.error.main, 0.1)
-                              }
-                            }}
-                          >
-                            <DeleteIcon fontSize="small" />
-                          </IconButton>
-                        </Stack>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                )}
-              </AnimatePresence>
+                ))
+              )}
             </TableBody>
           </Table>
         </TableContainer>
