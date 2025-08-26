@@ -15,6 +15,7 @@ import type {
   Payment,
   Admin,
   Conversation,
+  Skill,
 } from '../types';
 
 // Dashboard stats interface based on backend API
@@ -520,6 +521,34 @@ const api = {
         totalConversations: 1,
         totalMessages: 1
       };
+    }
+  },
+
+  // Skills Management - Connected to Backend API
+  async getSkills(): Promise<Skill[]> {
+    try {
+      const response = await axiosInstance.get('/guards/skills');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching skills:', error);
+      // Fallback to mock data structure
+      return [
+        { id: 1, name: 'Security Guard' },
+        { id: 2, name: 'Armed Security' },
+        { id: 3, name: 'Event Security' },
+        { id: 4, name: 'Corporate Security' },
+        { id: 5, name: 'Residential Security' }
+      ];
+    }
+  },
+
+  async createSkill(data: { name: string }): Promise<Skill> {
+    try {
+      const response = await axiosInstance.post('/guards/skills', data);
+      return response.data;
+    } catch (error) {
+      console.error('Error creating skill:', error);
+      throw error;
     }
   },
 

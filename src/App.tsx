@@ -14,6 +14,7 @@ import DashboardLayout from './admin-panel/DashboardLayout';
 const DashboardPage = React.lazy(() => import('./admin-panel/DashboardPage'));
 const UsersPage = React.lazy(() => import('./admin-panel/UsersPage'));
 const GuardsPage = React.lazy(() => import('./admin-panel/GuardsPage'));
+const SkillsPage = React.lazy(() => import('./admin-panel/SkillsPage'));
 const BookingsPage = React.lazy(() => import('./admin-panel/BookingsPage'));
 const PaymentsPage = React.lazy(() => import('./admin-panel/PaymentsPage'));
 const AdminsPage = React.lazy(() => import('./admin-panel/AdminsPage'));
@@ -68,6 +69,11 @@ const App: React.FC = () => {
             <Route path="guards" element={
               <Suspense fallback={<PageLoader />}>
                 <GuardsPage />
+              </Suspense>
+            } />
+            <Route path="skills" element={
+              <Suspense fallback={<PageLoader />}>
+                <SkillsPage />
               </Suspense>
             } />
             <Route path="bookings" element={

@@ -22,6 +22,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import PaymentIcon from '@mui/icons-material/Payment';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ChatIcon from '@mui/icons-material/Chat';
+import PsychologyIcon from '@mui/icons-material/Psychology';
 
 const drawerWidth = 240;
 
@@ -44,6 +45,7 @@ const DashboardLayout: React.FC = () => {
     { text: 'Dashboard', icon: <DashboardIcon />, path: '' },
     { text: 'Users', icon: <PeopleIcon />, path: 'users' },
     { text: 'Guards', icon: <ShieldIcon />, path: 'guards' },
+    { text: 'Skills', icon: <PsychologyIcon />, path: 'skills' },
     { text: 'Bookings', icon: <AssignmentIcon />, path: 'bookings' },
     { text: 'Payments', icon: <PaymentIcon />, path: 'payments' },
     { text: 'Admins', icon: <AdminPanelSettingsIcon />, path: 'admins' },

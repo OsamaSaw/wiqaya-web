@@ -47,3 +47,17 @@ export interface Conversation {
   lastMessage: string;
   date: string;
 }
+
+export interface Skill {
+  id: number;
+  name: string;
+  guardProfiles?: GuardProfile[];
+}
+
+export interface GuardProfile {
+  id: string;
+  isVerified: boolean;
+  experienceYears: number;
+  hourlyRate: number;
+  locations: string[];
+}
