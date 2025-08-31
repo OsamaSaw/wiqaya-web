@@ -149,7 +149,7 @@ export interface ConversationsResponse {
 // Configure axios instance for your backend
 // Update baseURL to match your backend server
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:3000',
+  baseURL: process.env.REACT_APP_API_BASE_URL || "/api",
   timeout: 10000,
 });
 

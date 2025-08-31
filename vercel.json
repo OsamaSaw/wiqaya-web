@@ -14,5 +14,10 @@
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "build",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "http://94.130.142.135:4001/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
